@@ -1,0 +1,21 @@
+{
+  "name": "audit-project",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "dev": "concurrently -n backend,frontend -c blue,green \"npm start -w audit-project-backend\" \"npm run dev -w audit-project-frontend\"",
+    "dev:backend": "npm start -w audit-project-backend",
+    "dev:frontend": "npm run dev -w audit-project-frontend",
+    "build": "npm run build -w audit-project-frontend && npm run build -w audit-project-backend",
+    "build:frontend": "npm run build -w audit-project-frontend",
+    "build:backend": "npm run build -w audit-project-backend"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "playwright": "^1.59.1",
+    "wait-on": "^9.0.4"
+  }
+}
